@@ -3,7 +3,7 @@
 S.LSI 송년의 밤(2026. 11. 12 목, 17:30 – 18:00) 참석자에게 사전 안내하는 모바일 웹 페이지입니다.
 호암미술관 전통정원 **희원**을 걷는 12개 지점의 산책 코스를 안내합니다. 한국어(기본)와 영어(`?lang=en`)를 지원합니다.
 
-**접속 링크: <https://github.samsungds.net/pages/steven-oh/mobile-year-end/site/>**
+**접속 링크: <https://kor-steven-oh.github.io/year-end/site/>**
 
 ### 일반 폰
 
