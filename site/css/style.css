@@ -137,6 +137,7 @@ a { color: inherit; text-decoration: none; }
 .finish .eyebrow { color: var(--accent); }
 .finish h3 { font: 600 28px/1.4 var(--serif); margin-top: 14px; }
 .finish p { margin-top: 14px; color: var(--muted); font-size: 15px; }
+.finish .finish-notice { margin-top: 24px; color: var(--ink); font-weight: 600; }
 footer { padding: 32px var(--pad) calc(env(safe-area-inset-bottom) + 96px); font-size: 12px; line-height: 1.8; color: var(--muted); background: var(--paper-2); }
 
 /* ---------- PC: 폰 프레임 안에 같은 페이지(iframe) + 왼쪽 행사 개요 ---------- */
