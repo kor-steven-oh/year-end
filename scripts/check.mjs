@@ -1,0 +1,35 @@
+// 검수: 첫 화면, 지도 2열 목록, 지도 확대+GPS(법연지 좌표 가정), 사진 확대
+import { createRequire } from "module";
+import path from "path";
+const require = createRequire(import.meta.url);
+const puppeteer = require(path.join(require("child_process").execSync("npm root -g").toString().trim(), "puppeteer-core"));
+import fs from "fs";
+const root = process.cwd(); fs.mkdirSync(path.join(root, "scripts/shots"), { recursive: true });
+const out = (n) => path.join(root, "scripts/shots", n + ".png");
+const url = "file:///" + path.join(root, "site/index.html").split(path.sep).join("/");
+const browser = await puppeteer.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true });
+const ctx = browser.defaultBrowserContext();
+await ctx.overridePermissions("file://", ["geolocation"]).catch(() => {});
+const page = await browser.newPage();
+const errs = [];
+page.on("pageerror", (e) => errs.push(e.message));
+page.on("console", (m) => m.type() === "error" && errs.push(m.text()));
+await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+await page.setGeolocation({ latitude: 37.2935681, longitude: 127.1914891, accuracy: 8 });
+await page.goto(url, { waitUntil: "load" });
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+await wait(2500); await page.screenshot({ path: out("a-hero") });
+await page.evaluate(() => document.querySelector("#map").scrollIntoView({ behavior: "instant" }));
+await wait(4000); await page.screenshot({ path: out("b-map") });
+await page.click("#mapbox .loc"); await wait(1500);
+console.log("me hidden:", await page.$eval("#me", (e) => e.hidden), "transform:", await page.$eval("#me", (e) => e.getAttribute("transform")));
+await page.mouse.click(200, 150); await wait(800);   // 지도 빈 곳 탭 → 확대 보기
+await page.screenshot({ path: out("c-viewer-map") });
+await page.click("#vwX"); await wait(600);
+console.log("map back in slot:", await page.$eval("#mapSlot", (e) => !!e.querySelector("#mapSvg")), "viewBox:", await page.$eval("#mapSvg", (e) => e.getAttribute("viewBox")));
+await page.evaluate(() => document.querySelector("#s2").scrollIntoView({ behavior: "instant" }));
+await wait(1500); await page.click("#s2 .ph img"); await wait(800);
+await page.screenshot({ path: out("d-viewer-photo") });
+console.log("viewer on:", await page.$eval("#vw", (e) => e.classList.contains("on")));
+console.log("errors:", errs.length ? errs : "none");
+await browser.close();

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>S.LSI 송년의 밤 · 호암미술관 희원 산책</title>
+<meta name="description" content="S.LSI 송년의 밤 — 호암미술관 전통정원 희원 산책 코스 안내 (17:30 – 18:00)">
+<meta property="og:title" content="S.LSI 송년의 밤 · 호암미술관 희원 산책">
+<meta property="og:description" content="17:30 – 18:00 · 전통정원 희원을 걷는 열두 개의 장면">
+<meta property="og:image" content="img/hero.webp">
+<meta name="theme-color" content="#F3EEE5">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/frame-init.js"></script>
+</head>
+<body>
+
+<header class="hero">
+  <img src="img/hero.webp" alt="가을 햇살 아래 호암미술관 전경" data-en-alt="Hoam Museum of Art in autumn sunlight" fetchpriority="high">
+  <div class="hero-in">
+    <a class="lang" id="lang" href="?lang=en" target="_top" lang="en" aria-label="English version">EN</a>
+    <div>
+      <p class="event"><b>S.LSI</b><i aria-hidden="true"></i><span data-en="Year-End Night">송년의 밤</span></p>
+      <h1 data-en="A Walk Through<br>Heewon Garden<small>Hoam Museum of Art · Twelve scenes in a traditional Korean garden</small>">호암미술관<br>희원 산책<small>전통정원을 걷는 열두 개의 장면</small></h1>
+    </div>
+    <div>
+      <div class="meta">
+        <dl>
+          <div><dt>DATE</dt><dd data-en="Nov 12, 2026 <small>Thu</small>">2026. 11. 12 <small>Thu</small></dd></div>
+          <div><dt>TIME</dt><dd>17:30 ~ 18:00</dd></div>
+        </dl>
+        <dl>
+          <div><dt>COURSE</dt><dd>12 Spots</dd></div>
+          <div id="dist" hidden><dt>DISTANCE</dt><dd></dd></div>
+        </dl>
+      </div>
+      <span class="cue" aria-hidden="true"></span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro reveal">
+    <p data-en="Founded by Hoam Lee Byung-chull, the founder of Samsung, the Hoam Museum of Art opened in 1982. Before it unfolds Heewon, a traditional Korean garden of walls and gates, pavilions and ponds.">삼성의 창업자 호암 이병철 선생이 세운 호암미술관. 그 앞에 담과 문, 정자와 연못이 이어지는 전통정원 ‘희원’이 펼쳐집니다.</p>
+    <p data-en="Starting from the Information Center, the walk passes through Bohwamun Gate, circles the Rear Garden behind the museum, crosses the Main Garden by the Lotus Pond and ends at HOAM Café. Take your time — about 30 minutes.">안내소에서 출발해 보화문을 지나 미술관 뒤 후원을 돌고, 주정의 법연지를 거쳐 호암카페에서 산책을 마칩니다. 약 30분 동안 천천히 걸어 보세요.</p>
+  </section>
+
+  <section id="map">
+    <div class="sec-h"><h2>COURSE MAP</h2><span data-en="Tap the map to enlarge">지도를 누르면 크게 볼 수 있습니다</span></div>
+    <div class="map" id="mapbox">
+      <div id="mapSlot">
+        <svg class="map-svg" id="mapSvg" viewBox="55 130 760 440" role="img" aria-label="희원 산책 코스 지도" data-en-aria="Heewon garden walk course map">
+          <!-- 새 지도 픽셀 -> 기존 지도 좌표 (패치 정합 28점, 평균 오차 0.43px). 경로·핀·GPS 좌표는 기존 좌표계 그대로 -->
+          <image href="img/map.webp" x="0" y="0" width="1857" height="993" transform="matrix(0.563932 0.000171 -0.000171 0.563932 -18.515 23.676)"/>
+          <g transform="translate(0 28)">
+            <path class="route-bg" id="routeBg"/>
+            <path class="route" id="route"/>
+            <g id="pins"></g>
+          </g>
+          <g class="me" id="me" hidden><circle class="acc" r="0"/><circle class="pulse" r="7"/><circle class="dot" r="7"/></g>
+        </svg>
+      </div>
+      <div class="map-btn">
+        <button type="button" class="loc" data-loc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><span data-en="My Location">내 위치</span></button>
+      </div>
+    </div>
+    <div class="legend"><span data-en="Start · Information Center">출발 · 안내소</span><span data-en="Finish · HOAM Café">도착 · 호암카페</span></div>
+    <div class="index" id="index"></div>
+  </section>
+
+  <section class="stops" id="stops"></section>
+
+  <section class="finish reveal" id="finish">
+    <p class="eyebrow">FINISH</p>
+    <h3 data-en="HOAM Café">호암카페</h3>
+    <p data-en="Pass back through Bohwamun Gate<br>and end the walk at HOAM Café on the hill.">보화문을 다시 지나 언덕 위 호암카페에서<br>산책을 마칩니다.</p>
+    <img src="img/cafe.webp" srcset="img/cafe.webp 1400w, img/cafe-2x.webp 2400w" sizes="100vw" alt="호암카페 입구" data-en-alt="Entrance to HOAM Café" loading="lazy" width="1400" height="933">
+  </section>
+</main>
+
+<aside class="desk" aria-label="행사 개요">
+  <div class="desk-in">
+    <div class="frame-sw" role="group" aria-label="미리보기 기기">
+      <button type="button" data-frame="phone" data-en="Phone">일반 폰</button>
+      <button type="button" data-frame="fold" data-en="Galaxy Z Fold (unfolded)">갤럭시 Z 폴드 펼침</button>
+    </div>
+    <p class="desk-about"><b>MOBILE WEB GUIDE</b><span data-en="This mobile web page is shared in advance with attendees of S.LSI Year-End Night.">S.LSI 송년의 밤 참석자분들께 사전 안내되는<br>모바일 웹 페이지입니다.</span></p>
+    <p class="event"><b>S.LSI</b><i aria-hidden="true"></i><span data-en="Year-End Night">송년의 밤</span></p>
+    <h2 data-en="A Walk Through<br>Heewon Garden">호암미술관<br>희원 산책</h2>
+    <dl>
+      <div><dt>DATE</dt><dd data-en="Thu, Nov 12, 2026<br>17:30 – 18:00">2026. 11. 12 (목)<br>17:30 – 18:00</dd></div>
+      <div><dt>VENUE</dt><dd data-en="Heewon Garden,<br>Hoam Museum of Art">호암미술관 전통정원 희원</dd></div>
+      <div><dt>COURSE</dt><dd><span data-en="Information Center → HOAM Café">안내소 → 호암카페</span><br>12 Spots · <span class="km"></span></dd></div>
+      <div><dt>PHOTO</dt><dd id="deskPhoto"></dd></div>
+      <div><dt>ADDRESS</dt><dd data-en="38, Everland-ro 562beon-gil, Pogok-eup, Cheoin-gu, Yongin-si, Gyeonggi-do">경기도 용인시 처인구 포곡읍<br>에버랜드로 562번길 38</dd></div>
+    </dl>
+    <p class="note" data-en="Open on your phone to see the course map with your location.">휴대폰에서 열면 코스 지도에 내 위치를 함께 볼 수 있습니다.</p>
+  </div>
+</aside>
+
+<div class="device" id="device"><div class="phone" id="phone"><iframe id="phoneFrame" title="모바일 화면" allow="geolocation"></iframe></div><div class="veil" id="veil"></div><div class="flap" id="flap" aria-hidden="true"><i class="f"><span class="clip"><span class="img"></span></span></i><i class="b"></i></div></div>
+<script src="js/desk.js"></script>
+
+<footer>
+  <div class="wrap" data-en="Hoam Museum of Art · 38, Everland-ro 562beon-gil, Pogok-eup, Cheoin-gu, Yongin-si, Gyeonggi-do<br>Descriptions adapted from the official Hoam Museum of Art website (leeumhoam.org)">
+    호암미술관 · 경기도 용인시 처인구 포곡읍 에버랜드로 562번길 38<br>
+    지점 설명 출처: 호암미술관 공식 홈페이지 (leeumhoam.org)
+  </div>
+</footer>
+
+<div class="bar" id="bar" aria-hidden="true"><div class="bar-in"><b id="barNo"></b><span id="barName"></span><small id="barOf"></small></div><i id="barFill"></i></div>
+<a class="fab" id="fab" href="#map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg><span data-en="Course Map">코스 지도</span></a>
+
+<div class="vw" id="vw" role="dialog" aria-modal="true" aria-label="확대 보기" data-en-aria="Enlarged view">
+  <div class="vw-top"><b id="vwTitle"></b><button type="button" class="vw-x" id="vwX" aria-label="닫기" data-en-aria="Close">×</button></div>
+  <div class="vw-stage" id="vwStage"><div class="vw-c" id="vwC"></div></div>
+  <div class="vw-bot"><span data-en="Pinch to zoom · Double-tap to zoom in/out">두 손가락으로 확대 · 두 번 탭하면 확대/축소</span><button type="button" class="vw-loc" id="vwLoc" data-loc hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><span data-en="My Location">내 위치</span></button></div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

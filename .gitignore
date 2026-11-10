@@ -1,0 +1,13 @@
+# DRM 원본·복호화 이미지·작업 폴더 (site/img 에는 가공본만 포함)
+/course-*.png
+/hero-*.jpg
+/decrypted/
+/_tmp_drm/
+/scripts/shots/
+# 개인 에디터/에이전트 설정
+/.opencode/
+/opencode.jsonc
+node_modules/
+
+# 호암카페 원본(5MB). 배포용은 site/img/cafe.webp
+/site/img/restaurant_cafe.png
